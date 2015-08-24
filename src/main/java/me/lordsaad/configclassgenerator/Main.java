@@ -1,3 +1,5 @@
+package me.lordsaad.configclassgenerator;
+
 import com.google.common.base.CaseFormat;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
