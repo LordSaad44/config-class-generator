@@ -42,7 +42,7 @@ public class Main extends Application {
         grid.add(scenetitle, 0, 0);
 
         final TextArea input = new TextArea();
-        input.setMaxSize(500, 500);
+        input.setMaxSize(600, 600);
         input.setPromptText("Input");
         grid.add(input, 0, 1);
 
@@ -51,7 +51,7 @@ public class Main extends Application {
 
         final TextArea output = new TextArea();
         output.setEditable(false);
-        output.setMaxSize(500, 500);
+        output.setMaxSize(600, 600);
         output.setPromptText("Output");
         grid.add(output, 0, 3);
 
@@ -59,7 +59,7 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 Yaml yaml = new Yaml();
                 Map config = (Map) yaml.load(input.getText());
-                String s = "";
+                String s = "public class Configuration {\n";
                 for (Object key : config.keySet()) {
 
                     s += "\n    public static class "
@@ -103,6 +103,7 @@ public class Main extends Application {
                     }
                     s += "    }\n";
                 }
+                s += "}";
                 output.setText(s);
             }
         });
