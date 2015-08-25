@@ -77,15 +77,46 @@ public class Main extends Application {
                                     + subContents.toString()
                                     + ".\";\n";
 
-                            for (Object subSubContents : ((Map) map.get(subContents)).keySet()) {
-                                s += "        public static final String "
-                                        + subContents.toString().replace("-", "_").toUpperCase()
-                                        + "_"
-                                        + subSubContents.toString().replace("-", "_").toUpperCase()
-                                        + " = " + subContents.toString().replace("-", "_").toUpperCase()
-                                        + " + \""
-                                        + subSubContents.toString()
-                                        + "\";\n";
+                            Map subMap = (Map) map.get(subContents);
+                            for (Object subSubContents : subMap.keySet()) {
+                                System.out.println(subSubContents.toString());
+
+                                if (subMap.get(subSubContents).toString().contains("{")) {
+                                    s += "        private static final String "
+                                            + subContents.toString().replace("-", "_").toUpperCase()
+                                            + "_"
+                                            + subSubContents.toString().replace("-", "_").toUpperCase()
+                                            + " = " + subContents.toString().replace("-", "_").toUpperCase()
+                                            + " + \""
+                                            + subSubContents.toString()
+                                            + ".\";\n";
+
+                                    Map subSubMap = (Map) subMap.get(subSubContents);
+                                    for (Object subSubSubContents : subSubMap.keySet()) {
+                                        s += "        public static final String "
+                                                + subContents.toString().replace("-", "_").toUpperCase()
+                                                + "_"
+                                                + subSubContents.toString().replace("-", "_").toUpperCase()
+                                                + "_"
+                                                + subSubSubContents.toString().replace("-", "_").toUpperCase()
+                                                + " = "
+                                                + subContents.toString().replace("-", "_").toUpperCase()
+                                                + "_"
+                                                + subSubContents.toString().replace("-", "_").toUpperCase()
+                                                + " + \""
+                                                + subSubSubContents.toString()
+                                                + "\";\n";
+                                    }
+                                } else {
+                                    s += "        public static final String "
+                                            + subContents.toString().replace("-", "_").toUpperCase()
+                                            + "_"
+                                            + subSubContents.toString().replace("-", "_").toUpperCase()
+                                            + " = " + subContents.toString().replace("-", "_").toUpperCase()
+                                            + " + \""
+                                            + subSubContents.toString()
+                                            + "\";\n";
+                                }
                             }
                         } else {
                             if (map.values().contains(map.get(subContents))) {
