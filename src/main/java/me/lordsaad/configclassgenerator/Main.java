@@ -93,8 +93,6 @@ public class Main extends Application {
                                     Map subSubMap = (Map) subMap.get(subSubContents);
                                     for (Object subSubSubContents : subSubMap.keySet()) {
                                         s += "        public static final String "
-                                                + subContents.toString().replace("-", "_").toUpperCase()
-                                                + "_"
                                                 + subSubContents.toString().replace("-", "_").toUpperCase()
                                                 + "_"
                                                 + subSubSubContents.toString().replace("-", "_").toUpperCase()
