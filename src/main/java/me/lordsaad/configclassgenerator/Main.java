@@ -79,7 +79,6 @@ public class Main extends Application {
 
                             Map subMap = (Map) map.get(subContents);
                             for (Object subSubContents : subMap.keySet()) {
-                                System.out.println(subSubContents.toString());
 
                                 if (subMap.get(subSubContents).toString().contains("{")) {
                                     s += "        private static final String "
